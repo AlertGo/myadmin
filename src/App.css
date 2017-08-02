@@ -1,0 +1,132 @@
+@import '~antd/dist/antd.css';
+  html,body {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0
+}
+div,ul,li,ol,dl,dt,dd,img,button,p,input {
+  margin:0 ;
+  padding: 0
+}
+#news_ul>li {
+  list-style-type: circle;
+  margin-left: 30px;
+  text-indent: 0px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+#news_ul>li li {
+  margin-left: 15px;
+  font-size: 12px;
+  font-weight: 200;
+  list-style-type:disc;
+  line-height: 20px;
+}
+.news_imgbox {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  left: 0;
+  top: 0
+}
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: #333;
+  border-radius: 6px;
+  margin: 16px;
+}
+.Main_none {
+  display: none;
+}
+#components-layout-demo-side .ant-layout-sider-collapsed .anticon {
+  font-size: 16px;
+  margin-left: 8px;
+}
+#components-layout-demo-side .ant-layout-sider-collapsed .nav-text {
+  display: none;
+}
+#components-layout-demo-side .ant-layout-sider-collapsed .ant-menu-submenu-vertical > .ant-menu-submenu-title:after {
+  display: none;
+}
+/** 新闻页img图片的替换与删除 start
+****/
+  #news_img_ul {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-top: 20px;
+}
+#news_img_ul li {
+  width: 800px;
+  height: 30px;
+  font-size: 0;
+  line-height: 30px;
+  border-bottom:1px solid #999;
+}
+.news_fontli {
+  font-size: 14px;
+  font-weight: bold;
+}
+#news_img_ul li>span {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 12px;
+  height: 30px;
+}
+.news_img_spanA {
+  width: 60%;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+.news_img_spanB {
+  width: 20%;
+  text-align: center;
+}
+.news_img_spanC {
+  width: 20%;
+  text-align: center;
+}
+#setImg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  position:fixed;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.setImgs {
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -300px;
+  margin-top: -150px;
+  background-color: #aaa;
+  padding-left: 30px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 10px 2px black;
+  display: none;
+}
+.setImgs button {
+  margin-right: 30px;
+  margin-top: 30px;
+}
+.setImgs p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#news_img_add {
+  width: 800px;
+  height: 30px;
+  text-align: right;
+  display: none;
+  margin-top: 20px;
+}

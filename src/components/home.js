@@ -71,22 +71,22 @@ export default class SiderDemo extends React.Component {
             <Menu.Item key="6">
               <span>
                 <Icon type="file" />
-                <span className="nav-text">File</span>
+                <span className="nav-text" onClick={this.ck(-1)}>File</span>
               </span>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{  }}>
+        <Layout>
           <Header style={{ background: '#fff', padding: 0 ,textIndent:30,fontSize:20}}>八马茶业__后台管理</Header>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '12px 0' }}>
               <Breadcrumb.Item>{this.state.guideA}</Breadcrumb.Item>
               <Breadcrumb.Item>{this.state.guideB}</Breadcrumb.Item>
             </Breadcrumb>
-            {/*******默认进来*********/}
+            {/*******默认界面*********/}
             <div style={{ padding: 24, background: '#fff', minHeight: 360, height:"auto" , height:"800px"}} className={-1==this.state.id?"":"Main_none"}>
                 <ul id="news_ul">
-                    <li>News >>>>> 新闻更新页
+                    <li>News > 新闻更新页
                          <ul>
                             <li>新闻banner更新</li>
                             <li>新闻列表更新</li>

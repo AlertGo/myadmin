@@ -5,18 +5,21 @@ export default class Sider extends React.Component {
        super()
        this.state={
           img:[],
-          id:0
+          id:0,
+          id2:0
        }
        this.files={}
     }
     getIMGlist (){
-        this.fetchFn('http://localhost:8006/img/newsimg')
+        this.fetchFn('http://localhost:8006/news/newsimg')
           this.refs.news_img_add.style.display="block";
     }
-    upDataimg (x){
+    upDataimg (x,x2){
         return () => {
+          console.log(x,x2)
           this.setState({
-            id:x
+            id:x,
+            id2:x2
           })
           this.refs.setImg.style.display="block";
           this.refs.setImg.children[0].style.display="block";
@@ -34,22 +37,18 @@ export default class Sider extends React.Component {
         
     }
     chuanclick (){
-
         let fd=new FormData();
         for(var i in this.files){
            fd.append("upload"+i,this.files[i])
         }
-        this.fetchFnupdata("http://localhost:8006/news/news",fd)
+        this.fetchFnupdata("http://localhost:8006/news/addimg",fd)
     }
     cancel (x){
       return ()=>{
-
         this.refs.setImg.style.display="none"
         this.refs.setImg.children[x].style.display="none";
-
       }
     }
-
     addImgs (){
         this.refs.setImg.style.display="block";
         this.refs.setImg.children[1].style.display="block";
@@ -68,19 +67,16 @@ export default class Sider extends React.Component {
     addgo (){
         let fd=new FormData();
         console.log(this.files)
-
         for(var i in this.files){
             fd.append("upload"+i,this.files[i])
         }
-        this.fetchFnupdata2("http://localhost:8006/news/news",fd)
+        this.fetchFnupdata2("http://localhost:8006/news/addimg",fd)
     }
     //删除
     delete (x){
-
-        return ()=>{
-         
+        return ()=>{         
           let str=`id=${x}`
-           console.log(x,str)
+          console.log(x,str)
           this.fetchDelete("http://localhost:8006/news/deles",str)
         }
     }
@@ -99,7 +95,7 @@ export default class Sider extends React.Component {
                     return (
                         <li key={i}>
                             <span className="news_img_spanA">{v['img']}</span>
-                            <span className="news_img_spanB"><Button onClick={this.upDataimg(v['id'])} type="primary" size="small" ghost>替换</Button></span>
+                            <span className="news_img_spanB"><Button onClick={this.upDataimg(v['id'],i)} type="primary" size="small" ghost>替换</Button></span>
                             <span className="news_img_spanC"><Button type="primary" size="small" ghost onClick={this.delete(v['id'])}>删除</Button></span>      
                         </li>
                     )
@@ -136,7 +132,7 @@ export default class Sider extends React.Component {
         })
         .then((data)=>data.json())
         .then((data)=>{
-            this.fetchFn('http://localhost:8006/img/newsimg')
+            this.fetchFn('http://localhost:8006/news/newsimg')
 
             this.refs.setImg.style.display="none";
             this.refs.setImg.children[1].style.display="none";
@@ -199,7 +195,7 @@ export default class Sider extends React.Component {
             if(data.ok) return data.json()            
           })
         .then( data => {
-            this.fetchFn('http://localhost:8006/img/newsimg')
+            this.fetchFn('http://localhost:8006/news/newsimg')
           
         })
         .catch((x)=>{
@@ -218,7 +214,8 @@ export default class Sider extends React.Component {
           })
         .then( data => {
           //将地址插入当前页面
-          this.state.img[this.state.id-1]['img']="http://localhost:8006/"+data[0]['path']
+          console.log(this.state.img,this.state.id,this.state.id2)
+          this.state.img[this.state.id2]['img']="http://localhost:8006/"+data[0]['path']
           this.setState({
               img:this.state.img
           })

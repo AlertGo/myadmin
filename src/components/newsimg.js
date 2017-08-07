@@ -90,8 +90,7 @@ export default class Sider extends React.Component {
                   <span className="news_img_spanB">替换</span>
                   <span className="news_img_spanC">删除</span>
                 </li>
-                {this.state.img.map((v,i) => {
-              
+                {this.state.img.map((v,i) => {            
                     return (
                         <li key={i}>
                             <span className="news_img_spanA">{v['img']}</span>
@@ -179,7 +178,7 @@ export default class Sider extends React.Component {
 
         })
         .catch((x)=>{
-            console.log(x)
+            alert("请选择图片")
         })
     }
     //删除
@@ -196,7 +195,7 @@ export default class Sider extends React.Component {
           })
         .then( data => {
             this.fetchFn('http://localhost:8006/news/newsimg')
-          
+            
         })
         .catch((x)=>{
             console.log(x)
@@ -228,7 +227,7 @@ export default class Sider extends React.Component {
           this.fetchUpdata("http://localhost:8006/news/replace",str);
         })
         .catch((x)=>{
-            console.log(x)
+            alert("请选择图片")
         })
     }
     //更新

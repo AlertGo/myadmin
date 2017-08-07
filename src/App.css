@@ -59,6 +59,12 @@ div,ul,li,ol,dl,dt,dd,img,button,p,input {
   overflow: hidden;
   margin-top: 20px;
 }
+#news_news_ul {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  margin-top: 20px;
+}
 #news_img_ul li {
   width: 800px;
   height: 30px;
@@ -130,3 +136,48 @@ div,ul,li,ol,dl,dt,dd,img,button,p,input {
   display: none;
   margin-top: 20px;
 }
+
+#replace_news{width: 100%;height: 100%;background-color: rgba(0,0,0,.5);position: fixed;left: 0;top: 0;z-index: 999;display: none}
+#replace_news_con{width: 900px;height: auto;margin: 10px auto;overflow: hidden;padding: 20px 0;padding-left: 15px;padding-right: 15px;box-sizing: border-box;background-color: rgba(255,255,255,.9);box-shadow: 3px 3px 20px 2px #333}
+#replace_detail_news{width: 100%;height: 100%;overflow: hidden;}
+#replace_detail_news input{display: inline-block;border-radius: 5px;padding-left: 10px;width:300px;height: 25px;vertical-align: top;font-size: 12px;border:1px solid #999;outline: none;margin-top: 10px;}
+#replace_detail_news label{display: inline-block;width: 60px;height: 25px;vertical-align: top;line-height: 25px;margin-top: 10px;}
+#replace_news button{margin-right: 20px;}
+.pagecolor{color: red;}
+
+
+.news_news_span1,.news_news_span2,.news_news_span3,.news_news_span4,.news_news_span5 {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 12px;
+  height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.news_news_span1{width: 7%;text-align: center;}
+.news_news_span2{width: 15%;}
+.news_news_span3{width: 40%;margin-right: 5%;}
+.news_news_span4{width: 15%;}
+.news_news_span5{width: 15%;}
+#page{text-align: right;display: none;overflow: hidden;width: 800px;}
+#pagecons{display: inline-block;position: relative;height: 20px;overflow: hidden;vertical-align: top;margin-top: 20px;}
+.around{width: 30px;height: 20px;line-height: 18px;border:1px solid black;text-align: center;display: inline-block;box-sizing: border-box;margin-top: 20px;vertical-align: top;}
+#pagecon {display: block;height: 20px;font-size: 0;position: absolute;left: 0px;top: 0;transition: 1s;}
+#pagecon span{display: inline-block;line-height: 18px;width: 25px;height: 20px;margin: 0 5px;border:1px solid black;box-sizing: border-box;text-align: center;font-size: 12px;vertical-align: top;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

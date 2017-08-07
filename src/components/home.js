@@ -2,9 +2,7 @@ import React from "react"
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import Aside from './newsimg'
 import Aside2 from './newslist'
-
-
-
+import Replacesnews from './newsreplace'
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -52,13 +50,13 @@ export default class SiderDemo extends React.Component {
               title={<span><Icon type="user" /><span className="nav-text" ref="nav_text">News</span></span>}
             >
               <Menu.Item key="1">
-                 <div onClick={this.ck(0)}>banner</div>
+                 <div onClick={this.ck(0)}>banner_news</div>
               </Menu.Item>
               <Menu.Item key="2">
-                 <div onClick={this.ck(1)}>list</div>
+                 <div onClick={this.ck(1)}>list_news</div>
               </Menu.Item>
               <Menu.Item key="3">
-                 <div onClick={this.ck(2)}>3333</div>
+                 <div onClick={this.ck(2)}>replace_news</div>
               </Menu.Item>
             </SubMenu>
             <SubMenu
@@ -83,26 +81,39 @@ export default class SiderDemo extends React.Component {
               <Breadcrumb.Item>{this.state.guideA}</Breadcrumb.Item>
               <Breadcrumb.Item>{this.state.guideB}</Breadcrumb.Item>
             </Breadcrumb>
-            {/*******默认界面*********/}
+            {/*******
+              默认界面
+              **/}
             <div style={{ padding: 24, background: '#fff', minHeight: 360, height:"auto" , height:"800px"}} className={-1==this.state.id?"":"Main_none"}>
                 <ul id="news_ul">
                     <li>News > 新闻更新页
                          <ul>
                             <li>新闻banner更新</li>
-                            <li>新闻列表更新</li>
+                            <li>新闻列表与内容添加</li>
                             <li>新闻所对应详情更新</li>
                          </ul>
                     </li>
 
                 </ul>
             </div>  
+             {/***********
+              图片添加与删除
+              */}
             <div style={{ padding: 24, background: '#fff', minHeight: 360, height:"auto" }} className={0==this.state.id?"":"Main_none"}>
               <Aside />
             </div>
+             {/******
+              新闻添加
+              */}
             <div style={{ padding: 24, background: '#fff', minHeight: 360, height:"auto" }} className={1==this.state.id?"":"Main_none"}>
               <Aside2  />
             </div>
-
+            {/*****
+              替换页
+              */}
+            <div style={{ padding: 24, background: '#fff', minHeight: 360, height:"auto" }} className={2==this.state.id?"":"Main_none"}>
+              <Replacesnews />          
+            </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             Ant Design ©2016 Created by Ant UED

@@ -1,10 +1,9 @@
-import React from "react"
-import ReactQuill from 'react-quill'
-import Quill from 'quill'
-import E from 'wangeditor'
-import 'react-quill/dist/quill.snow.css' 
+import React from "react";
+import ReactQuill from 'react-quill';
+import Quill from 'quill';
+import E from 'wangeditor';
+import 'react-quill/dist/quill.snow.css';
 import { Menu, Icon, Switch , Button} from 'antd';
-
 export default class Sider extends React.Component {
 	constructor (){
 		super()
@@ -13,6 +12,7 @@ export default class Sider extends React.Component {
 		}
 		this.text=""
 		this.obj=null;
+		this.editor=null
 	}
 	shouldComponentUpdate(){
 		return false
@@ -45,14 +45,14 @@ export default class Sider extends React.Component {
    		 	 theme: 'snow'
  	 	});
  		*/
- 		var editor=new E(this.refs.editor)
+ 		this.editor=new E(this.refs.editor)
  		// editor.customConfig.uploadImgServer = 'http://localhost:8006/public/images/'
- 	// 	editor.customConfig.uploadImgHeaders = {
-  //  			 'Accept': 'text/x-json'
+ 		// 	editor.customConfig.uploadImgHeaders = {
+  		//  			 'Accept': 'text/x-json'
 		// }
 		// //跨域上传中如果需要传递 cookie 需设置 withCredentials
 		// editor.customConfig.withCredentials = true
-		editor.customConfig.customUploadImg = (files, insert)=>{
+		this.editor.customConfig.customUploadImg = (files, insert)=>{
  			var filess={}
 			for (var i in files){
 				isNaN(i)!=true && (filess[i]=files[i])
@@ -73,20 +73,21 @@ export default class Sider extends React.Component {
 			})
 
 			}
-	 		editor.create()
-	 		editor.txt.html('<p>编辑内容...</p>')
+	 		this.editor.create()
+	 		this.editor.txt.html('<p>编辑内容...</p>')
 	}
-
-
 	ck (){
-		console.log(this.refs.editor.children[1].children[0].innerHTML)
 		// //详情
-		let cons=this.refs.editor.children[1].children[0].innerHTML;
+		let cons=JSON.stringify(this.refs.editor.children[1].children[0].innerHTML);
+		var html = this.editor.txt.html();
+        // 获取格式化后的纯文本
+        var formatText = this.editor.txt.text();
+        console.log(formatText)
 		//时间
 		let date=this.refs.date.value;
 		//title
 		let title=this.refs.list.value;
-		console.log(cons,date,title)
+		let arr=[html]
 		fetch("http://localhost:8006/news/addliebiao",{
 			method:"post",
 			headers:{
@@ -96,33 +97,36 @@ export default class Sider extends React.Component {
 		})
 		.then((data)=>data.json())
 		.then((data)=>{
-			console.log(data)
+
+			html=html.replace(/&/g, "W3School")
 			fetch("http://localhost:8006/news/cons",{
 				method:"post",
 				headers:{
 					"Content-type": "application/x-www-form-urlencoded; charset=UTF-8" 
 				},
-				body:`cons=${cons}&id=${data[0]['max(id)']}`
-
+				body:`cons=${html}&id=${data[0]['max(id)']}`
+			})
+			.then((txt)=>{
+				if(txt.ok){
+					alert("成功提交")
+					return txt.json()
+				}
 				})
-			.then((txt)=>txt.json())
 			.then((txt)=>{
 				console.log(txt)
 			})
 
 		})
-
-	}
-	changes (){
-		
 	}
  	render() {
     	return (
       		<div>
       			<label>列表标题：</label><input ref="list" type="text" /><br/>
       			<label>列表日期：</label><input ref="date" type="date" />
-      			<h3>编辑详情内容：</h3>
-	      	 	<div id="editor" ref="editor" >
+      			<h3 style={{margin:"10px 0"}}>编辑详情内容：</h3>
+      			<div id="editor0" ref="editor0" style={{marginBottom:10}}>
+	      	 	</div>
+	      	 	<div id="editor" ref="editor" style={{marginBottom:10}}>
 
 	      	 	</div>
 				<Button onClick={this.ck.bind(this)} type="primary" size="small" ghost>确定</Button>
